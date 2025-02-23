@@ -1,0 +1,135 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000;
+  padding: 1rem;
+  border-radius: 8px;
+  gap: 24px;
+  border: 1px solid #fff;
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.todo-item-actions {
+  display: flex;
+  gap: 10px
+}
+
+.search-bar {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 16px;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.form-section-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.form-section  label {
+  font-size: 20px;
+}
+
+.form-section-checkbox label {
+  font-size: 20px;
+}
+
+.form-section input {
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 80%;
+}
+
+.form-todo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-dialog {
+  width: 400px;
+  border: none;
+}
+
+.form-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}

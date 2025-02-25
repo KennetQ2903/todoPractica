@@ -19,7 +19,8 @@ export const TodoList=() => {
             id: todos.length+1,
             title,
             description,
-            checked: e.currentTarget.completed.checked
+            checked: e.currentTarget.completed.checked,
+            dueDate: e.currentTarget.dueDate.value
         }
         setTodos(prev => prev.concat(newTodo))
     },[todos])
@@ -39,12 +40,14 @@ export const TodoList=() => {
         const id=item.id
         const title=item.title
         const description=item.description
-        const checked = item.checked
+        const checked=item.checked
+        const dueDate=item.dueDate
         const newTodo: TTodoItem={
             id,
             title,
             description,
-            checked
+            checked,
+            dueDate
         }
         setTodos(prev => prev.map(i => i.id === id ? newTodo : i))
     },[todos])
@@ -54,13 +57,18 @@ export const TodoList=() => {
         const todo=todos.find(i => i.id===id)
         if(!todo) return
         setSelectedTodo(todo)
-    }, [todos])
+    },[todos])
+    
+    const resetFormType=useCallback(() => {
+        setFormType('add')
+        setSelectedTodo(undefined)
+    },[])
 
     return (
         <>
             <div className="header">
                 <TodoSearchBar onSearch={onSearchTodo} />
-                <TodoForm onSubmit={addTodo}  type={formType} selectedTodo={selectedTodo} onEdit={editTodo} />
+                <TodoForm onSubmit={addTodo}  type={formType} selectedTodo={selectedTodo} onEdit={editTodo} reset={resetFormType} />
             </div>
             <ul>
                 {(query ? todos.filter(i =>

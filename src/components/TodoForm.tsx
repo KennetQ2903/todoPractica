@@ -5,9 +5,10 @@ interface Props {
     type?: 'edit'|'add'
     selectedTodo?: TTodoItem
     onEdit?: (item?: TTodoItem) => void
+    reset?: () => void
 }
 
-export const TodoForm: React.FC<Props>=({onSubmit, type='add', selectedTodo, onEdit}) => {
+export const TodoForm: React.FC<Props>=({onSubmit, type='add', selectedTodo, onEdit, reset}) => {
 
     const showForm=() => {
         const dialog=document.getElementById('addTodoForm') as HTMLDialogElement
@@ -17,6 +18,7 @@ export const TodoForm: React.FC<Props>=({onSubmit, type='add', selectedTodo, onE
     const cancel=() => {
         const dialog=document.getElementById('addTodoForm') as HTMLDialogElement
         dialog.close()
+        reset?.()
     }
 
     const confirm=(e: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +30,8 @@ export const TodoForm: React.FC<Props>=({onSubmit, type='add', selectedTodo, onE
                 id: selectedTodo?.id as number,
                 title: e.currentTarget.title.value || '',
                 description: e.currentTarget.description.value,
-                checked: e.currentTarget.completed.checked
+                checked: e.currentTarget.completed.checked,
+                dueDate: e.currentTarget.dueDate.value
             })
         } else {
             onSubmit(e)
@@ -37,7 +40,7 @@ export const TodoForm: React.FC<Props>=({onSubmit, type='add', selectedTodo, onE
         return e.currentTarget.reset()
           
     }
-    
+
     return (
         <>
             <button onClick={showForm}>Agregar</button>

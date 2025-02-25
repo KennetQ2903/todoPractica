@@ -7,7 +7,7 @@ interface Props {
     onEdit: (id: number) => void
 }
 
-export const TodoItem: FC<TTodoItem&Props>=({description,id,title, checked = false,onDelete, onEdit}) => {
+export const TodoItem: FC<TTodoItem&Props>=({description,id,title, checked = false, dueDate,onDelete, onEdit}) => {
     
     const handleDelete=() => {
         console.log(id)
@@ -23,7 +23,8 @@ export const TodoItem: FC<TTodoItem&Props>=({description,id,title, checked = fal
             <section className="todo-item">
                 <label>Titulo: {title}</label>
                 <p>Descripcion: {description}</p>
-                <span>completado:{checked ? '✔️' : '❌'}</span>
+                <span>completado:{checked? '✔️':'❌'}</span>
+                <span>Fecha de vencimiento: {dueDate? dueDate:'Sin fecha'}</span>
             </section>
             <section className="todo-item-actions">
                 <button onClick={handleDelete}>
